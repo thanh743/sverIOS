@@ -57,13 +57,12 @@ async function updateDevice(req, res) {
     if (error) return res.status(400).send(error.details[0].message);
 
     try {
-      
         const device = await Device.findByIdAndUpdate(
             deviceId,
             {
                 id: req.body.id,
-                name: req.body.name
-              
+//              name: req.body.name
+                expiredDate: req.body.expiredDate // Thay đổi thành cập nhật expiredDate
             },
             { new: true } // Return the updated device
         );
